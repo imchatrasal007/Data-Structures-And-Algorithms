@@ -1,1 +1,1 @@
-This Repository Contains Various Dsa Solutions from websites like GFG and LeetCode
+This Repository Contains Various DSA Solutions from websites like GFG and LeetCode.
