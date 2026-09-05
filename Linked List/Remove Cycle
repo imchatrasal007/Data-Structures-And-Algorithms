@@ -1,0 +1,51 @@
+Given the head of a singly linked list. A cycle exists if the last node points back to a previous node, forming a loop. Remove the loop from the linked list if it exists.
+Internally, the driver code uses a variable x (1-based indexing) to represent the position of the node to which the last node is connected.
+The driver code will print "true" if the linked list is correctly modified, otherwise it will print "false".
+/*
+structure of linked list node:
+
+struct Node
+{
+    int data;
+    Node* next;
+    
+    Node(int val)
+    {
+        data = val;
+        next = NULL;
+    }
+};
+
+*/
+class Solution
+{
+    public:
+    //Function to remove a loop in the linked list.
+    void removeLoop(Node* head)
+    {
+     struct Node *slow,*fast,*meet,*start,*temp;
+        slow=head;
+        fast=head;
+        while(fast!=0 && fast->next!=0)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+            if(fast==slow)
+            {
+                start=head;
+                meet=slow;
+                while(start!=meet)
+                {
+                    start=start->next;
+                    meet=meet->next;
+                }
+                  temp=start;
+               while(temp->next!=start)
+              {
+              temp=temp->next;
+              }
+              temp->next=0;
+            }
+        }
+    }
+};
