@@ -1,0 +1,55 @@
+You are given the head of a singly linked list, you have to left rotate the linked list k times. Return the head of the modified linked list.
+/*
+
+struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+class Solution
+{
+    public:
+    //Function to rotate a linked list.
+    Node* rotate(Node* head, int k)
+    {
+        int count;
+        count=0;
+        struct Node *last,*temp,*temp1,*temp2;
+        temp2=head;
+        while(temp2!=0)
+        {
+            temp2=temp2->next;
+            count++;
+        }
+        last=head;
+        while(last!=0 && last->next!=0)
+        {
+            last=last->next;
+        }
+        if(k==count)
+        {
+            return head;
+        }
+        else
+        {
+        int index=1;
+        temp=head;
+        while(temp!=0 && index!=k)
+        {
+            temp=temp->next;
+            index++;
+        }
+        temp1=head;
+        head=temp->next;
+        temp->next=0;
+        last->next=temp1;
+        return head;
+        }
+    }
+};
+    
